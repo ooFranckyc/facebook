@@ -9,4 +9,6 @@ class AppStore {
   static const Color colorGrey =Color(0xff9397A1);
   static const Color colorWhiteBelge =Color(0xffECEDF1);
   static const Color colorWhite = Colors.white;
+  static const Color colorTransparent = Colors.transparent;
+  static const Color colorGreen = Color(0xff21CC49);
 }
