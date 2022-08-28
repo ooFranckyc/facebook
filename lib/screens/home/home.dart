@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: Container(
         height: 60,
         color: AppStore.colorWhite,
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

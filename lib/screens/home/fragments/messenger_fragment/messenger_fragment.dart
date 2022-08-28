@@ -1,4 +1,8 @@
+import 'package:facebook/models/chat.dart';
+import 'package:facebook/screens/home/fragments/messenger_fragment/message_screens/message_screen.dart';
+import 'package:facebook/screens/home/fragments/messenger_fragment/widgets/chat_card.dart';
 import 'package:facebook/utils/appstore.dart';
+import 'package:facebook/utils/widgets/search_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -45,6 +49,26 @@ class _MessengerFragmentState extends State<MessengerFragment> {
           backgroundColor: AppStore.colorWhite,
         ),
         backgroundColor: AppStore.colorWhite,
-        body: SingleChildScrollView(child: Column()));
+        body: SingleChildScrollView(
+            child: Column(
+          children: [
+            const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: SearchBarStackIcon(
+                    hintText: "Messages", icon: CupertinoIcons.search)),
+            Expanded(
+              child: ListView.builder(
+                itemCount: chatsData.length,
+                itemBuilder: ((context, index) => ChatCard(
+                      chat: chatsData[index],
+                      press: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const MessageScreen())),
+                    )),
+              ),
+            )
+          ],
+        )));
   }
 }
