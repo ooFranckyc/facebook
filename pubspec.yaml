@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   carousel_slider: ^4.1.1
   flutter_bounce: ^1.1.0
+  cached_network_image: ^3.2.1
   # advance_image_picker: ^0.1.7+1
 
 dev_dependencies:

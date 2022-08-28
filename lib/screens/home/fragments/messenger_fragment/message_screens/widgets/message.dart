@@ -39,26 +39,30 @@ class Message extends StatelessWidget {
                   fontWeight: FontWeight.w400)),
           const SizedBox(height: 15),
           // messages.
-          Column(
-            crossAxisAlignment: message.isSender
-                ? CrossAxisAlignment.end
-                : CrossAxisAlignment.start,
+          Row(
             mainAxisAlignment: message.isSender
                 ? MainAxisAlignment.end
                 : MainAxisAlignment.start,
             children: [
-              messageContaint(message),
-              if (message.isSender)
-                MessageStatusDot(status: message.messageStatus),
-              if (!message.isSender) ...[
-                const CircleAvatar(
-                  radius: 12,
-                  backgroundImage: AssetImage('assets/icons/user.jpg'),
-                ),
-                const SizedBox(
-                  width: 3,
-                )
-              ],
+              Column(
+                crossAxisAlignment: message.isSender
+                    ? CrossAxisAlignment.end
+                    : CrossAxisAlignment.start,
+                children: [
+                  messageContaint(message),
+                  if (message.isSender)
+                    MessageStatusDot(status: message.messageStatus),
+                  if (!message.isSender) ...[
+                    const CircleAvatar(
+                      radius: 12,
+                      backgroundImage: AssetImage('assets/icons/user.jpg'),
+                    ),
+                    const SizedBox(
+                      width: 3,
+                    )
+                  ],
+                ],
+              ),
             ],
           ),
         ],
