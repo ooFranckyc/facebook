@@ -47,7 +47,7 @@ class SearchBarStackIcon extends StatelessWidget {
           alignment: Alignment.centerLeft,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 25),
+              padding: const EdgeInsets.only(left: 28),
               child: TextFormField(
                 decoration: InputDecoration(
                     focusedBorder: InputBorder.none,

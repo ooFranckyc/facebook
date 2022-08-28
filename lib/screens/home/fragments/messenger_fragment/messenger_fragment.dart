@@ -49,16 +49,19 @@ class _MessengerFragmentState extends State<MessengerFragment> {
           backgroundColor: AppStore.colorWhite,
         ),
         backgroundColor: AppStore.colorWhite,
-        body: SingleChildScrollView(
-            child: Column(
+        body: Column(
           children: [
             const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: SearchBarStackIcon(
                     hintText: "Messages", icon: CupertinoIcons.search)),
+            const SizedBox(
+              height: 10,
+            ),
             Expanded(
               child: ListView.builder(
                 itemCount: chatsData.length,
+                physics: const BouncingScrollPhysics(),
                 itemBuilder: ((context, index) => ChatCard(
                       chat: chatsData[index],
                       press: () => Navigator.push(
@@ -69,6 +72,6 @@ class _MessengerFragmentState extends State<MessengerFragment> {
               ),
             )
           ],
-        )));
+        ));
   }
 }
