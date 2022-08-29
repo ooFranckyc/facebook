@@ -6,8 +6,9 @@ class AwesomeInterractIcon extends StatelessWidget {
   final IconData icon;
   final String title;
   final Color color;
+  final VoidCallback onTap;
   const AwesomeInterractIcon(
-      {Key? key, required this.icon, required this.title, required this.color})
+      {Key? key, required this.icon, required this.title, required this.color, required this.onTap})
       : super(key: key);
 
   @override
@@ -16,10 +17,7 @@ class AwesomeInterractIcon extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: Bounce(
         duration: const Duration(milliseconds: 180),
-        onPressed: () {
-          // writen you code here, or create void callback in this object
-          // then parsing this function in here...
-        },
+        onPressed: onTap,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -31,8 +29,7 @@ class AwesomeInterractIcon extends StatelessWidget {
               style: const TextStyle(
                 color: AppStore.colorGrey,
                 fontSize: 13,
-                letterSpacing: .90,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w500,
               ),
             )
           ],

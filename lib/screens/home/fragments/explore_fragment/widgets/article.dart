@@ -54,8 +54,8 @@ class _MarketplaceItemState extends State<MarketplaceItem> {
                             color: Colors.black45, shape: BoxShape.circle),
                         child: Icon(
                           isCheck
-                              ? CupertinoIcons.square_favorites_alt_fill
-                              : CupertinoIcons.square_favorites_alt,
+                              ? CupertinoIcons.bookmark_solid
+                              : CupertinoIcons.bookmark,
                           size: 25,
                           color: AppStore.colorWhite,
                         ))),

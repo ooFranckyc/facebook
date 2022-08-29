@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:facebook/screens/home/fragments/explore_fragment/pages/groups/groups_page.dart';
 import 'package:facebook/screens/home/fragments/explore_fragment/widgets/article.dart';
 import 'package:facebook/screens/home/fragments/explore_fragment/widgets/awesome_interract_icon.dart';
+import 'package:facebook/utils/animations/transition.dart';
 import 'package:facebook/utils/appstore.dart';
 import 'package:facebook/utils/widgets/search_bar.dart';
 import 'package:flutter/cupertino.dart';
@@ -65,25 +67,25 @@ class _ExploreFragmentState extends State<ExploreFragment> {
                             style: TextStyle(
                                 color: AppStore.colorGrey,
                                 fontSize: 13,
-                                fontWeight: FontWeight.bold),
+                                fontWeight: FontWeight.w400),
                           ), // my country ;)
                           GestureDetector(
                               onTap: () {
                                 // refresh your information
                               },
                               child: const Icon(Icons.sync,
-                                  size: 18, color: AppStore.colorGrey))
+                                  size: 20, color: AppStore.colorGrey))
                         ],
                       ),
                     ),
                     Padding(
                       padding:
-                          const EdgeInsets.only(left: 10, right: 70, top: 5),
+                          const EdgeInsets.only(left: 15, right: 70, top: 5),
                       child: Row(
                         children: [
                           Icon(
                             CupertinoIcons.sun_max_fill,
-                            color: Colors.amber.shade700,
+                            color: Colors.amber.shade500,
                             size: 60,
                           ),
                           Row(
@@ -95,7 +97,8 @@ class _ExploreFragmentState extends State<ExploreFragment> {
                                 style: TextStyle(
                                     fontSize: 30,
                                     color: AppStore.colorBlack,
-                                    fontWeight: FontWeight.w700),
+                                    letterSpacing: 1.1,
+                                    fontWeight: FontWeight.w400),
                               ),
                               const SizedBox(width: 15),
                               Column(
@@ -104,12 +107,16 @@ class _ExploreFragmentState extends State<ExploreFragment> {
                                   const Text(
                                     "Sunny",
                                     style: TextStyle(
-                                        color: AppStore.colorGrey,
-                                        fontWeight: FontWeight.w500),
+                                        color: AppStore.colorBlack,
+                                        fontWeight: FontWeight.w400),
                                   ),
                                   Row(
                                     children: const [
-                                      Text("Feed like"),
+                                      Text("Feed like",
+                                          style: TextStyle(
+                                              color: AppStore.colorGrey,
+                                              fontWeight: FontWeight.w400)),
+                                      SizedBox(width: 5),
                                       Text(
                                         "+24",
                                         style: TextStyle(
@@ -127,12 +134,12 @@ class _ExploreFragmentState extends State<ExploreFragment> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 15),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Divider(
                         height: 3,
                         thickness: 1.1,
-                        color: AppStore.colorGrey,
+                        color: AppStore.colorGrey.withOpacity(.40),
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -142,22 +149,23 @@ class _ExploreFragmentState extends State<ExploreFragment> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               const Text("18:00",
                                   style: TextStyle(
                                       color: AppStore.colorGrey,
                                       fontSize: 13,
-                                      fontWeight: FontWeight.w600)),
+                                      fontWeight: FontWeight.w400)),
                               const SizedBox(height: 3),
                               Icon(Icons.sunny,
-                                  color: Colors.amber.shade600, size: 25),
+                                  color: Colors.amber.shade600, size: 28),
                               const SizedBox(height: 3),
                               const Text(
                                 "+24",
                                 style: TextStyle(
                                     color: AppStore.colorBlack,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 13),
                               )
                             ],
                           ),
@@ -167,17 +175,17 @@ class _ExploreFragmentState extends State<ExploreFragment> {
                                   style: TextStyle(
                                       color: AppStore.colorGrey,
                                       fontSize: 13,
-                                      fontWeight: FontWeight.w600)),
+                                      fontWeight: FontWeight.w400)),
                               const SizedBox(height: 3),
                               Icon(Icons.sunny,
-                                  color: Colors.amber.shade600, size: 25),
+                                  color: Colors.amber.shade600, size: 28),
                               const SizedBox(height: 3),
                               const Text(
                                 "+23",
                                 style: TextStyle(
                                     color: AppStore.colorBlack,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 13),
                               )
                             ],
                           ),
@@ -187,17 +195,17 @@ class _ExploreFragmentState extends State<ExploreFragment> {
                                   style: TextStyle(
                                       color: AppStore.colorGrey,
                                       fontSize: 13,
-                                      fontWeight: FontWeight.w600)),
+                                      fontWeight: FontWeight.w400)),
                               const SizedBox(height: 3),
                               Icon(CupertinoIcons.cloud,
-                                  color: Colors.blue.shade600, size: 25),
+                                  color: Colors.blue.shade600, size: 28),
                               const SizedBox(height: 3),
                               const Text(
                                 "+20",
                                 style: TextStyle(
                                     color: AppStore.colorBlack,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 13),
                               )
                             ],
                           ),
@@ -207,17 +215,17 @@ class _ExploreFragmentState extends State<ExploreFragment> {
                                   style: TextStyle(
                                       color: AppStore.colorGrey,
                                       fontSize: 13,
-                                      fontWeight: FontWeight.w600)),
+                                      fontWeight: FontWeight.w500)),
                               const SizedBox(height: 3),
-                              Icon(CupertinoIcons.moon,
-                                  color: Colors.purple.shade600, size: 25),
+                              Icon(CupertinoIcons.moon_circle,
+                                  color: Colors.purple.shade600, size: 28),
                               const SizedBox(height: 3),
                               const Text(
                                 "+19",
                                 style: TextStyle(
                                     color: AppStore.colorBlack,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 13),
                               )
                             ],
                           ),
@@ -227,17 +235,17 @@ class _ExploreFragmentState extends State<ExploreFragment> {
                                   style: TextStyle(
                                       color: AppStore.colorGrey,
                                       fontSize: 13,
-                                      fontWeight: FontWeight.w600)),
+                                      fontWeight: FontWeight.w400)),
                               const SizedBox(height: 3),
-                              Icon(CupertinoIcons.moon,
-                                  color: Colors.purple.shade600, size: 25),
+                              Icon(CupertinoIcons.moon_circle,
+                                  color: Colors.purple.shade600, size: 28),
                               const SizedBox(height: 3),
                               const Text(
                                 "+18",
                                 style: TextStyle(
                                     color: AppStore.colorBlack,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 13),
                               )
                             ],
                           ),
@@ -247,17 +255,17 @@ class _ExploreFragmentState extends State<ExploreFragment> {
                                   style: TextStyle(
                                       color: AppStore.colorGrey,
                                       fontSize: 13,
-                                      fontWeight: FontWeight.w600)),
+                                      fontWeight: FontWeight.w400)),
                               const SizedBox(height: 3),
                               Icon(CupertinoIcons.cloud,
-                                  color: Colors.blue.shade600, size: 25),
+                                  color: Colors.blue.shade600, size: 28),
                               const SizedBox(height: 3),
                               const Text(
                                 "+17",
                                 style: TextStyle(
                                     color: AppStore.colorBlack,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 13),
                               )
                             ],
                           ),
@@ -268,7 +276,7 @@ class _ExploreFragmentState extends State<ExploreFragment> {
                 ),
               ),
             ),
-            // const Spacer(),
+            // const Spacer(), // cause a exception | cause une exception
             const SizedBox(height: 20),
             // all in one with you hand
             Padding(
@@ -279,54 +287,72 @@ class _ExploreFragmentState extends State<ExploreFragment> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
+                    children: [
                       AwesomeInterractIcon(
-                          icon: Icons.coronavirus,
-                          title: "COVID-19",
-                          color: Colors.pink),
+                        icon: Icons.coronavirus,
+                        title: "COVID-19",
+                        color: Colors.pink,
+                        onTap: () {},
+                      ),
                       AwesomeInterractIcon(
-                          icon: CupertinoIcons.person_2,
-                          title: "Friends",
-                          color: Colors.blue),
+                        icon: CupertinoIcons.person_2_fill,
+                        title: "Friends",
+                        color: Colors.blue,
+                        onTap: () {},
+                      ),
                       AwesomeInterractIcon(
-                          icon: CupertinoIcons.group,
-                          title: "Groups",
-                          color: Colors.purple),
+                        icon: CupertinoIcons.group_solid,
+                        title: "Groups",
+                        color: Colors.purple.shade800,
+                        onTap: sendToGroupsDashboardScreen,
+                      ),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
+                    children: [
                       AwesomeInterractIcon(
-                          icon: CupertinoIcons.shopping_cart,
-                          title: "Market",
-                          color: Colors.green),
+                        icon: CupertinoIcons.shopping_cart,
+                        title: "Market",
+                        color: Colors.green,
+                        onTap: () {},
+                      ),
                       AwesomeInterractIcon(
-                          icon: CupertinoIcons.memories,
-                          title: "Memories",
-                          color: Colors.purple),
+                        icon: CupertinoIcons.memories,
+                        title: "Memories",
+                        color: Colors.purple,
+                        onTap: () {},
+                      ),
                       AwesomeInterractIcon(
-                          icon: Icons.markunread_mailbox_outlined,
-                          title: "Saved",
-                          color: AppStore.colorBlack),
+                        icon: Icons.markunread_mailbox_rounded,
+                        title: "Saved",
+                        color: AppStore.colorBlack.withOpacity(.80),
+                        onTap: () {},
+                      ),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       AwesomeInterractIcon(
-                          icon: CupertinoIcons.gamecontroller,
-                          title: "Gaming",
-                          color: Colors.blue.shade800),
+                        icon: CupertinoIcons.gamecontroller_fill,
+                        title: "Gaming",
+                        color: Colors.blue.shade800,
+                        onTap: () {},
+                      ),
                       AwesomeInterractIcon(
-                          icon: Icons.event,
-                          title: "Events",
-                          color: Colors.red.shade800),
+                        icon: Icons.event,
+                        title: "Events",
+                        color: Colors.red.shade500,
+                        onTap: () {},
+                      ),
                       AwesomeInterractIcon(
-                          icon: Icons.work_history_outlined,
-                          title: "Jobs",
-                          color: Colors.amber.shade800),
+                        icon: Icons.work_history_rounded,
+                        title: "Jobs",
+                        color: Colors.amber.shade800,
+                        onTap: () {},
+                      ),
                     ],
                   ),
                 ],
@@ -423,5 +449,9 @@ class _ExploreFragmentState extends State<ExploreFragment> {
         ),
       ),
     );
+  }
+
+  void sendToGroupsDashboardScreen() {
+    Navigator.push(context, SlideTransitionRightToLeft(const GroupsPage()));
   }
 }
