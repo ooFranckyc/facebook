@@ -27,7 +27,7 @@ class _ExploreFragmentState extends State<ExploreFragment> {
           "Good day, Franck!",
           style: TextStyle(
               color: AppStore.colorPrimary,
-              fontSize: 30,
+              fontSize: 26,
               fontWeight: FontWeight.bold),
         ),
       ),
