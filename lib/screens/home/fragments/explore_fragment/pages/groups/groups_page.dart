@@ -61,7 +61,7 @@ class _GroupsPageState extends State<GroupsPage> {
               indicatorColor: AppStore.colorPrimary,
               indicatorWeight: 3,
               labelColor: AppStore.colorBlack,
-              labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
               unselectedLabelStyle:
                   TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
               unselectedLabelColor: AppStore.colorGrey,

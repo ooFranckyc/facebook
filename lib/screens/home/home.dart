@@ -106,7 +106,7 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                     color: AppStore.colorWhiteBelge,
                     border: Border.all(
-                        width: currentIndex == 4 ? 1.10 : 0,
+                        width: currentIndex == 4 ? 2 : 0,
                         color: currentIndex == 4
                             ? AppStore.colorPrimary
                             : AppStore.colorTransparent),

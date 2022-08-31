@@ -547,6 +547,7 @@ class _ProfileFragmentState extends State<ProfileFragment> {
           Container(
             width: double.infinity,
             height: 40,
+            alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(horizontal: 10),
             color: AppStore.colorWhite,
             child: Row(
@@ -573,7 +574,61 @@ class _ProfileFragmentState extends State<ProfileFragment> {
                         size: 30, color: AppStore.colorPrimary)),
               ],
             ),
-          )
+          ),
+          const SizedBox(height: 15),
+          Divider(
+              height: 1,
+              thickness: 1,
+              color: AppStore.colorGrey.withOpacity(.30)),
+          const DefaultTabController(
+            length: 3,
+            child: TabBar(
+                padding: EdgeInsets.zero,
+                labelPadding: EdgeInsets.zero,
+                indicatorPadding: EdgeInsets.zero,
+                indicatorSize: TabBarIndicatorSize.label,
+                indicatorColor: AppStore.colorPrimary,
+                indicatorWeight: 3,
+                labelColor: AppStore.colorBlack,
+                labelStyle:
+                    TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                unselectedLabelStyle:
+                    TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
+                unselectedLabelColor: AppStore.colorGrey,
+                tabs: [
+                  Tab(
+                    text: "Uploads",
+                  ),
+                  Tab(
+                    text: "Albums",
+                  ),
+                  Tab(
+                    text: "Photos of you",
+                  ),
+                ]),
+          ),
+          SizedBox(height: MediaQuery.of(context).size.height / 3),
+          Align(
+              alignment: Alignment.center,
+              child: Column(
+                children: const [
+                  Text(
+                    "No Image in here",
+                    style: TextStyle(
+                        color: AppStore.colorPrimary,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    "You can upload from you gallery",
+                    style: TextStyle(
+                        color: AppStore.colorBlack,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400),
+                  ),
+                ],
+              ))
         ],
       ),
     );

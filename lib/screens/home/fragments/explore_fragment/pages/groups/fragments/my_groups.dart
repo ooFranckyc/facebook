@@ -53,7 +53,7 @@ class _MyGroupsState extends State<MyGroups> {
                         "All Groups",
                         style: TextStyle(
                             color: AppStore.colorBlack,
-                            fontSize: 17,
+                            fontSize: 16,
                             fontWeight: FontWeight.w600),
                       ),
                       SizedBox(width: 5),
@@ -61,8 +61,8 @@ class _MyGroupsState extends State<MyGroups> {
                         "26",
                         style: TextStyle(
                             color: AppStore.colorGrey,
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold),
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
@@ -77,7 +77,7 @@ class _MyGroupsState extends State<MyGroups> {
                             "Recently Joinded",
                             style: TextStyle(
                                 color: AppStore.colorPrimary,
-                                fontSize: 17,
+                                fontSize: 15,
                                 fontWeight: FontWeight.bold),
                           ),
                           SizedBox(width: 5),
@@ -163,7 +163,7 @@ class _MyGroupsState extends State<MyGroups> {
                       "Pinnded Groups",
                       style: TextStyle(
                           color: AppStore.colorBlack,
-                          fontSize: 17,
+                          fontSize: 16,
                           fontWeight: FontWeight.w600),
                     ),
                     GestureDetector(
@@ -174,7 +174,7 @@ class _MyGroupsState extends State<MyGroups> {
                         "Edit",
                         style: TextStyle(
                             color: AppStore.colorPrimary,
-                            fontSize: 17,
+                            fontSize: 15,
                             fontWeight: FontWeight.bold),
                       ),
                     )
