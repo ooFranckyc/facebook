@@ -149,7 +149,7 @@ class _NotificationFragmentState extends State<NotificationFragment> {
                     style: TextStyle(
                         color: AppStore.colorBlack,
                         fontSize: 16,
-                        fontWeight: FontWeight.w700),
+                        fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
@@ -165,7 +165,7 @@ class _NotificationFragmentState extends State<NotificationFragment> {
               3.toString(),
               style: const TextStyle(
                   color: AppStore.colorWhite,
-                  fontSize: 13,
+                  fontSize: 12,
                   fontWeight: FontWeight.bold),
             ),
           )
@@ -197,7 +197,7 @@ class _NotificationFragmentState extends State<NotificationFragment> {
                     style: TextStyle(
                         color: AppStore.colorBlack,
                         fontSize: 16,
-                        fontWeight: FontWeight.w700),
+                        fontWeight: FontWeight.w500),
                   ),
                   Text(
                     "Alina and 136 other people",
@@ -211,7 +211,7 @@ class _NotificationFragmentState extends State<NotificationFragment> {
             ],
           ),
           Container(
-            width: 50,
+            width: 45,
             height: 30,
             alignment: Alignment.center,
             decoration: BoxDecoration(

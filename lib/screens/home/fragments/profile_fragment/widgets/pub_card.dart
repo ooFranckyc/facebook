@@ -4,7 +4,14 @@ import 'package:flutter_bounce/flutter_bounce.dart';
 
 class PublicationCard extends StatefulWidget {
   final String author;
-  const PublicationCard({Key? key, required this.author}) : super(key: key);
+  final String authorImgProfile;
+  final String imgPathMediaForPub;
+  const PublicationCard(
+      {Key? key,
+      required this.author,
+      required this.authorImgProfile,
+      required this.imgPathMediaForPub})
+      : super(key: key);
 
   @override
   State<PublicationCard> createState() => _PublicationCardState();
@@ -36,8 +43,16 @@ class _PublicationCardState extends State<PublicationCard> {
                         Container(
                           width: 55,
                           height: 55,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             shape: BoxShape.circle,
+                            image: widget.authorImgProfile == "default_user"
+                                ? const DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage('assets/icons/user.jpg'))
+                                : DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image:
+                                        NetworkImage(widget.authorImgProfile)),
                             color: AppStore.colorWhiteBelge,
                           ),
                         ),
@@ -57,7 +72,7 @@ class _PublicationCardState extends State<PublicationCard> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children:  [
+                      children: [
                         Text(
                           widget.author,
                           style: const TextStyle(
@@ -102,7 +117,11 @@ class _PublicationCardState extends State<PublicationCard> {
               child: Container(
                 height: 220,
                 decoration: BoxDecoration(
-                    color: Colors.blue, borderRadius: BorderRadius.circular(8)),
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(widget.imgPathMediaForPub)),
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(8)),
               ),
             ),
             // controller
@@ -325,7 +344,23 @@ class _PublicationCardState extends State<PublicationCard> {
 
 // publication with text only
 class PublicationWithTextOnly extends StatefulWidget {
-  const PublicationWithTextOnly({Key? key}) : super(key: key);
+  final String nLike;
+  final String nLove;
+  final String nWow;
+  final String nComment;
+  final String nbShared;
+  final String authorName;
+  final String authorImgProfile;
+  const PublicationWithTextOnly(
+      {Key? key,
+      required this.nLike,
+      required this.nLove,
+      required this.nWow,
+      required this.nComment,
+      required this.nbShared,
+      required this.authorName,
+      required this.authorImgProfile})
+      : super(key: key);
 
   @override
   State<PublicationWithTextOnly> createState() =>
@@ -333,7 +368,10 @@ class PublicationWithTextOnly extends StatefulWidget {
 }
 
 class _PublicationWithTextOnlyState extends State<PublicationWithTextOnly> {
-  bool addUser = false;
+  bool isLikeSelected = false;
+  bool isLoveSelected = false;
+  bool isWowSelected = false;
+  bool userAddTargetContact = false;
 
   @override
   Widget build(BuildContext context) {
@@ -358,8 +396,11 @@ class _PublicationWithTextOnlyState extends State<PublicationWithTextOnly> {
                         Container(
                           width: 55,
                           height: 55,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             shape: BoxShape.circle,
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: NetworkImage(widget.authorImgProfile)),
                             color: AppStore.colorWhiteBelge,
                           ),
                         ),
@@ -379,16 +420,16 @@ class _PublicationWithTextOnlyState extends State<PublicationWithTextOnly> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Text(
-                          "Franck Mekoulou",
-                          style: TextStyle(
+                          widget.authorName,
+                          style: const TextStyle(
                               color: AppStore.colorBlack,
                               fontSize: 16,
                               fontWeight: FontWeight.w600),
                         ),
-                        SizedBox(height: 1),
-                        Text(
+                        const SizedBox(height: 1),
+                        const Text(
                           "August 15 at 2:34AM",
                           style: TextStyle(
                               color: AppStore.colorGrey,
@@ -462,12 +503,31 @@ class _PublicationWithTextOnlyState extends State<PublicationWithTextOnly> {
                   // like
                   Bounce(
                     duration: const Duration(milliseconds: 180),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        isLikeSelected = !isLikeSelected;
+                        if (isLoveSelected) {
+                          setState(() {
+                            isLoveSelected = false;
+                          });
+                        }
+                        if (isWowSelected) {
+                          setState(() {
+                            isWowSelected = false;
+                          });
+                        }
+                      });
+                    },
                     child: Container(
                       width: 70,
                       height: 35,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
+                          border: isLikeSelected
+                              ? Border.all(
+                                  width: 2, color: AppStore.colorPrimary)
+                              : Border.all(
+                                  width: 0, color: AppStore.colorTransparent),
                           color: AppStore.colorWhiteBelge,
                           borderRadius: BorderRadius.circular(20)),
                       child: Row(
@@ -476,9 +536,9 @@ class _PublicationWithTextOnlyState extends State<PublicationWithTextOnly> {
                           Image.asset('assets/icons/like.png',
                               width: 20, height: 20),
                           const SizedBox(width: 5),
-                          const Text(
-                            "128",
-                            style: TextStyle(
+                          Text(
+                            widget.nLike,
+                            style: const TextStyle(
                                 fontSize: 13,
                                 color: AppStore.colorBlack,
                                 fontWeight: FontWeight.bold),
@@ -491,12 +551,30 @@ class _PublicationWithTextOnlyState extends State<PublicationWithTextOnly> {
                   // love
                   Bounce(
                     duration: const Duration(milliseconds: 180),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        isLoveSelected = !isLoveSelected;
+                        if (isLikeSelected) {
+                          setState(() {
+                            isLikeSelected = false;
+                          });
+                        }
+                        if (isWowSelected) {
+                          setState(() {
+                            isWowSelected = false;
+                          });
+                        }
+                      });
+                    },
                     child: Container(
                       width: 70,
                       height: 35,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
+                          border: isLoveSelected
+                              ? Border.all(width: 2, color: Colors.pink)
+                              : Border.all(
+                                  width: 0, color: AppStore.colorTransparent),
                           color: AppStore.colorWhiteBelge,
                           borderRadius: BorderRadius.circular(20)),
                       child: Row(
@@ -505,9 +583,9 @@ class _PublicationWithTextOnlyState extends State<PublicationWithTextOnly> {
                           Image.asset('assets/icons/heart.png',
                               width: 20, height: 20),
                           const SizedBox(width: 5),
-                          const Text(
-                            "232",
-                            style: TextStyle(
+                          Text(
+                            widget.nLove,
+                            style: const TextStyle(
                                 fontSize: 13,
                                 color: AppStore.colorBlack,
                                 fontWeight: FontWeight.bold),
@@ -520,12 +598,30 @@ class _PublicationWithTextOnlyState extends State<PublicationWithTextOnly> {
                   // wow
                   Bounce(
                     duration: const Duration(milliseconds: 180),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        isWowSelected = !isWowSelected;
+                        if (isLikeSelected) {
+                          setState(() {
+                            isLikeSelected = false;
+                          });
+                        }
+                        if (isLoveSelected) {
+                          setState(() {
+                            isLoveSelected = false;
+                          });
+                        }
+                      });
+                    },
                     child: Container(
                       width: 70,
                       height: 35,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
+                          border: isWowSelected
+                              ? Border.all(width: 2, color: Colors.amber)
+                              : Border.all(
+                                  width: 0, color: AppStore.colorTransparent),
                           color: AppStore.colorWhiteBelge,
                           borderRadius: BorderRadius.circular(20)),
                       child: Row(
@@ -534,9 +630,9 @@ class _PublicationWithTextOnlyState extends State<PublicationWithTextOnly> {
                           Image.asset('assets/icons/wow.png',
                               width: 20, height: 20),
                           const SizedBox(width: 5),
-                          const Text(
-                            "12",
-                            style: TextStyle(
+                          Text(
+                            widget.nWow,
+                            style: const TextStyle(
                                 fontSize: 13,
                                 color: AppStore.colorBlack,
                                 fontWeight: FontWeight.bold),
@@ -551,7 +647,7 @@ class _PublicationWithTextOnlyState extends State<PublicationWithTextOnly> {
                     duration: const Duration(milliseconds: 180),
                     onPressed: () {
                       setState(() {
-                        addUser = !addUser;
+                        userAddTargetContact = !userAddTargetContact;
                       });
                     },
                     child: Container(
@@ -564,16 +660,16 @@ class _PublicationWithTextOnlyState extends State<PublicationWithTextOnly> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          addUser
+                          userAddTargetContact
                               ? Container()
                               : Image.asset('assets/icons/add-user.png',
                                   width: 20, height: 20),
                           const SizedBox(width: 5),
                           Text(
-                            addUser ? "Added." : "Add",
+                            userAddTargetContact ? "Added." : "Add",
                             style: TextStyle(
                                 fontSize: 13,
-                                color: addUser
+                                color: userAddTargetContact
                                     ? AppStore.colorPrimary
                                     : AppStore.colorBlack,
                                 fontWeight: FontWeight.bold),
@@ -629,7 +725,7 @@ class _PublicationWithTextOnlyState extends State<PublicationWithTextOnly> {
                       const Text(
                         "09 comments",
                         style: TextStyle(
-                          fontSize: 13,
+                            fontSize: 13,
                             color: AppStore.colorGrey,
                             fontWeight: FontWeight.w400),
                       )

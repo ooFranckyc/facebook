@@ -85,7 +85,7 @@ class InterractNotification extends StatelessWidget {
             width: 70,
             height: 70,
             decoration: BoxDecoration(
-                color: Colors.blue.shade400,
+                color: AppStore.colorWhiteBelge,
                 borderRadius: BorderRadius.circular(12)),
           ),
         ],

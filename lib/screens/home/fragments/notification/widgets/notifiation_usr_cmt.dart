@@ -1,6 +1,5 @@
 import 'package:facebook/utils/appstore.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 class NotificationUserComment extends StatelessWidget {
   const NotificationUserComment({Key? key}) : super(key: key);
@@ -104,7 +103,7 @@ class NotificationUserComment extends StatelessWidget {
                 width: 70,
                 height: 70,
                 decoration: BoxDecoration(
-                    color: Colors.blue.shade400,
+                    color: AppStore.colorWhiteBelge,
                     borderRadius: BorderRadius.circular(12)),
               ),
             ],

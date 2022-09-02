@@ -61,12 +61,42 @@ class FacebookStorieState extends State<FacebookStorie> {
               )
             ],
           ),
-          const ContactStorie(name: "Adam", hasRead: false),
-          const ContactStorie(name: "Adeline", hasRead: false),
-          const ContactStorie(name: "Jires", hasRead: true),
-          const ContactStorie(name: "Diane", hasRead: false),
-          const ContactStorie(name: "Martin", hasRead: true),
-          const ContactStorie(name: "Alan", hasRead: false),
+          const ContactStorie(
+            name: "Adam",
+            hasRead: false,
+            imgProfile:
+                "https://images.unsplash.com/photo-1537511446984-935f663eb1f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fG1hbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+          ),
+          const ContactStorie(
+            name: "Adeline",
+            hasRead: false,
+            imgProfile:
+                "https://images.unsplash.com/photo-1658460233894-a1fbb68f4b8b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8OHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60",
+          ),
+          const ContactStorie(
+            name: "Jires",
+            hasRead: true,
+            imgProfile:
+                "https://images.unsplash.com/photo-1612214070475-1e73f478188c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8YmxhY2slMjBtYW58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+          ),
+          const ContactStorie(
+            name: "Diane",
+            hasRead: false,
+            imgProfile:
+                "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Z2lybHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+          ),
+          const ContactStorie(
+            name: "Anais",
+            hasRead: true,
+            imgProfile:
+                "https://images.unsplash.com/photo-1599842057874-37393e9342df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Z2lybHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+          ),
+          const ContactStorie(
+            name: "Alan",
+            hasRead: false,
+            imgProfile:
+                "https://images.unsplash.com/photo-1548449112-96a38a643324?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+          ),
         ],
       ),
     );
@@ -76,7 +106,12 @@ class FacebookStorieState extends State<FacebookStorie> {
 class ContactStorie extends StatelessWidget {
   final String name;
   final bool hasRead;
-  const ContactStorie({Key? key, required this.name, required this.hasRead})
+  final String imgProfile;
+  const ContactStorie(
+      {Key? key,
+      required this.name,
+      required this.hasRead,
+      required this.imgProfile})
       : super(key: key);
 
   @override
@@ -102,6 +137,8 @@ class ContactStorie extends StatelessWidget {
               height: 40,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
+                image: DecorationImage(
+                    fit: BoxFit.cover, image: NetworkImage(imgProfile)),
                 border: Border.all(width: 2, color: AppStore.colorWhite),
                 color: AppStore.colorWhiteBelge,
               ),
